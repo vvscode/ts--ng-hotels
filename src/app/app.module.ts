@@ -6,6 +6,7 @@ import { MainComponent } from './pages/main/main.component';
 import { ListComponent } from './pages/Main/list/list.component';
 import { WeatherComponent } from './pages/Main/weather/weather.component';
 import { SelectedItemComponent } from './pages/Main/selected-item/selected-item.component';
+import { ItemComponent } from './pages/Main/list/item/item.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SelectedItemComponent } from './pages/Main/selected-item/selected-item.
     MainComponent,
     ListComponent,
     WeatherComponent,
-    SelectedItemComponent
+    SelectedItemComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule
