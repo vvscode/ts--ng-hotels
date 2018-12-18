@@ -167,6 +167,7 @@ span.cloud {
 }
 ul li.anc-bor {
     border-right: none;
+    text-decoration: underline;
 }
 /*--scroll --*/
 .span_7 {
