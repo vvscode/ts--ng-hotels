@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { IWeatherItem } from '../../../../../@types/IWeatherItem';
 import { Observable } from 'rxjs';
 
@@ -17,6 +24,9 @@ export class ListComponent implements OnChanges {
   @Input()
   public list?: Observable<IWeatherItem[]>;
 
+  @Output()
+  public cardChoosen: EventEmitter<IWeatherItem> = new EventEmitter();
+
   public ngOnChanges(changes: SimpleChanges): void {
     this.types = Array.from(
       changes.list.currentValue.value
@@ -32,5 +42,9 @@ export class ListComponent implements OnChanges {
 
   public setActiveType(type: string): void {
     this.activeType = type;
+  }
+
+  public onCardClick(item: IWeatherItem): void {
+    this.cardChoosen.emit(item);
   }
 }
