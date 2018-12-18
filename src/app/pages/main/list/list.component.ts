@@ -25,6 +25,6 @@ export class ListComponent implements OnChanges {
           return set;
         }, new Set())
         .values(),
-    ).sort();
+    ).sort() as string[];
   }
 }
