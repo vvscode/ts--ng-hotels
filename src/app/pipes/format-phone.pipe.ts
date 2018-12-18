@@ -1,12 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'formatPhone'
+  name: 'formatPhone',
 })
 export class FormatPhonePipe implements PipeTransform {
-
-  transform(value: any, args?: any): any {
-    return null;
+  public transform(value: string): string {
+    return value.replace(/(\d{3})(\d{3})(\d+)/, '($1) $2-$3');
   }
-
 }
