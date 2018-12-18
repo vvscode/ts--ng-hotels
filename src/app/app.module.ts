@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
-import { ListComponent } from './pages/Main/list/list.component';
-import { WeatherComponent } from './pages/Main/weather/weather.component';
-import { SelectedItemComponent } from './pages/Main/selected-item/selected-item.component';
-import { ItemComponent } from './pages/Main/list/item/item.component';
+import { ListComponent } from './pages/main/list/list.component';
+import { WeatherComponent } from './pages/main/weather/weather.component';
+import { SelectedItemComponent } from './pages/main/selected-item/selected-item.component';
+import { ItemComponent } from './pages/main/list/item/item.component';
 import { FilteredByTypePipe } from './pages/main/list/filtered-by-type.pipe';
 
 @NgModule({
@@ -17,12 +17,10 @@ import { FilteredByTypePipe } from './pages/main/list/filtered-by-type.pipe';
     WeatherComponent,
     SelectedItemComponent,
     ItemComponent,
-    FilteredByTypePipe
+    FilteredByTypePipe,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
