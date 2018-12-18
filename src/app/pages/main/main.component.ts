@@ -11,4 +11,11 @@ import { IWeatherItem } from '../../../../@types/IWeatherItem';
 })
 export class MainComponent {
   public listItems?: Observable<IWeatherItem[]> = of<IWeatherItem[]>(data);
+  public activeItem: IWeatherItem;
+
+  public constructor() {
+    this.listItems.subscribe(
+      (list: IWeatherItem[]) => (this.activeItem = list[0]),
+    );
+  }
 }

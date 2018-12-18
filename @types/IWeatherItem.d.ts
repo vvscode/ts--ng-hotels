@@ -1,18 +1,22 @@
+export interface IWeather {
+  title: string;
+  icon: string;
+  water: number;
+  temperature: number;
+}
+
+export interface ISocialInfo {
+  title: string;
+  img: string;
+  followers: number;
+  following: number;
+}
+
 export interface IWeatherItem {
   img: string;
   address: string;
   phone: string;
-  weather: {
-    title: string;
-    icon: string;
-    water: number;
-    temperature: number;
-  };
-  social_info: {
-    title: string;
-    img: string;
-    followers: number;
-    following: number;
-  };
+  weather: IWeather;
+  social_info: ISocialInfo;
   type: string;
 }

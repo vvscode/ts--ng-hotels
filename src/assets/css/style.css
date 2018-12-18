@@ -106,6 +106,8 @@ span.w-line {
   color: #fff;
 }
 .teddy-text img {
+  width: 70px;
+  height: 70px;
   border-radius: 70px;
   border: 3px solid #fff;
 }
