@@ -7,7 +7,8 @@ import { ListComponent } from './pages/main/list/list.component';
 import { WeatherComponent } from './pages/main/weather/weather.component';
 import { SelectedItemComponent } from './pages/main/selected-item/selected-item.component';
 import { ItemComponent } from './pages/main/list/item/item.component';
-import { FilteredByTypePipe } from './pages/main/list/filtered-by-type.pipe';
+import { FormatPhonePipe } from './pipes/format-phone.pipe';
+import { FilterByPipe } from './pipes/filter-by.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FilteredByTypePipe } from './pages/main/list/filtered-by-type.pipe';
     WeatherComponent,
     SelectedItemComponent,
     ItemComponent,
-    FilteredByTypePipe,
+    FormatPhonePipe,
+    FilterByPipe,
   ],
   imports: [BrowserModule],
   providers: [],

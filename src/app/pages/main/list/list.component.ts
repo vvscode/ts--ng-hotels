@@ -28,16 +28,20 @@ export class ListComponent implements OnChanges {
   public cardChoosen: EventEmitter<IWeatherItem> = new EventEmitter();
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.types = Array.from(
-      changes.list.currentValue.value
-        .map((el: IWeatherItem) => el.type)
-        .reduce((set: Set<String>, el: string) => {
-          set.add(el);
-          return set;
-        }, new Set())
-        .values(),
-    ).sort() as string[];
-    this.activeType = changes.activeItem.currentValue.type;
+    if (changes.list) {
+      this.types = Array.from(
+        changes.list.currentValue.value
+          .map((el: IWeatherItem) => el.type)
+          .reduce((set: Set<String>, el: string) => {
+            set.add(el);
+            return set;
+          }, new Set())
+          .values(),
+      ).sort() as string[];
+    }
+    if (changes.activeItem) {
+      this.activeType = changes.activeItem.currentValue.type;
+    }
   }
 
   public setActiveType(type: string): void {
