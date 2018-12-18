@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ListComponent implements OnChanges {
   public types: string[];
+  public activeType: string;
 
   @Input()
   public activeItem?: IWeatherItem;
@@ -26,5 +27,10 @@ export class ListComponent implements OnChanges {
         }, new Set())
         .values(),
     ).sort() as string[];
+    this.activeType = changes.activeItem.currentValue.type;
+  }
+
+  public setActiveType(type: string): void {
+    this.activeType = type;
   }
 }

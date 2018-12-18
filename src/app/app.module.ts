@@ -7,6 +7,7 @@ import { ListComponent } from './pages/Main/list/list.component';
 import { WeatherComponent } from './pages/Main/weather/weather.component';
 import { SelectedItemComponent } from './pages/Main/selected-item/selected-item.component';
 import { ItemComponent } from './pages/Main/list/item/item.component';
+import { FilteredByTypePipe } from './pages/main/list/filtered-by-type.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ItemComponent } from './pages/Main/list/item/item.component';
     ListComponent,
     WeatherComponent,
     SelectedItemComponent,
-    ItemComponent
+    ItemComponent,
+    FilteredByTypePipe
   ],
   imports: [
     BrowserModule
