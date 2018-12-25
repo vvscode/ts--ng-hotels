@@ -19,7 +19,13 @@ export class ListComponent implements OnChanges {
   public activeType: string;
 
   @Input()
-  public activeItem?: IWeatherItem;
+  public get activeItem(): IWeatherItem | null {
+    return this._activeItem;
+  }
+  public set activeItem(activeItem: IWeatherItem) {
+    this._activeItem = activeItem;
+    this.activeType = activeItem.type;
+  }
 
   @Input()
   public list?: Observable<IWeatherItem[]>;
@@ -27,21 +33,12 @@ export class ListComponent implements OnChanges {
   @Output()
   public cardChoosen: EventEmitter<IWeatherItem> = new EventEmitter();
 
+  private _activeItem: IWeatherItem;
+
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.list) {
-      this.types = Array.from(
-        changes.list.currentValue.value
-          .map((el: IWeatherItem) => el.type)
-          .reduce((set: Set<String>, el: string) => {
-            set.add(el);
-            return set;
-          }, new Set())
-          .values(),
-      ).sort() as string[];
-    }
-    if (changes.activeItem) {
-      this.activeType = changes.activeItem.currentValue.type;
-    }
+    // if (changes.activeItem) {
+    //   this.activeType = changes.activeItem.currentValue.type;
+    // }
   }
 
   public setActiveType(type: string): void {

@@ -9,6 +9,8 @@ import { SelectedItemComponent } from './pages/main/selected-item/selected-item.
 import { ItemComponent } from './pages/main/list/item/item.component';
 import { FormatPhonePipe } from './pipes/format-phone.pipe';
 import { FilterByPipe } from './pipes/filter-by.pipe';
+import { MapByPipe } from './pipes/map-by.pipe';
+import { UniqPipe } from './pipes/uniq.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { FilterByPipe } from './pipes/filter-by.pipe';
     ItemComponent,
     FormatPhonePipe,
     FilterByPipe,
+    MapByPipe,
+    UniqPipe,
   ],
   imports: [BrowserModule],
   providers: [],
