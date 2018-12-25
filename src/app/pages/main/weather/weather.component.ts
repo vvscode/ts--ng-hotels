@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { IWeather } from '../../../../../@types/IWeatherItem';
+import { Component } from '@angular/core';
+import { IWeather, IWeatherItem } from '../../../../../@types/IWeatherItem';
+import { ItemsService } from '../../../services/items.service';
 
 @Component({
   selector: 'ng-hotels-weather',
@@ -7,6 +8,11 @@ import { IWeather } from '../../../../../@types/IWeatherItem';
   styleUrls: ['./weather.component.less'],
 })
 export class WeatherComponent {
-  @Input()
   public weather?: IWeather;
+
+  public constructor(private _itemsService: ItemsService) {
+    this._itemsService.activeItem$.subscribe((item: IWeatherItem) => {
+      this.weather = item.weather;
+    });
+  }
 }
