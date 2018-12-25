@@ -9,6 +9,9 @@ export class FilterByPipe<T> implements PipeTransform {
     fieldName: string,
     fieldValue: string | number,
   ): T[] {
-    return value.filter((el: T) => el[fieldName] === fieldValue);
+    if (value && value.filter) {
+      return value.filter((el: T) => el[fieldName] === fieldValue);
+    }
+    return value;
   }
 }

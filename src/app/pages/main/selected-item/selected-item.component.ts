@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { ISocialInfo } from '../../../../../@types/IWeatherItem';
+import { Component } from '@angular/core';
+import { ISocialInfo, IWeatherItem } from '../../../../../@types/IWeatherItem';
+import { ItemsService } from '../../../services/items.service';
 
 @Component({
   selector: 'ng-hotels-selected-item',
@@ -7,6 +8,11 @@ import { ISocialInfo } from '../../../../../@types/IWeatherItem';
   styleUrls: ['./selected-item.component.less'],
 })
 export class SelectedItemComponent {
-  @Input()
   public socialInfo?: ISocialInfo;
+
+  public constructor(private _itemsService: ItemsService) {
+    this._itemsService.activeItem$.subscribe((item: IWeatherItem) => {
+      this.socialInfo = item.social_info;
+    });
+  }
 }

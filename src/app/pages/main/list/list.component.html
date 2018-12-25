@@ -1,9 +1,9 @@
-<div class="element-bg-img"><img [src]="activeItem.img" alt="" class="img-responsive"> </div>
+<div *ngIf="activeItem" class="element-bg-img"><img [src]="activeItem.img" alt="" class="img-responsive"> </div>
 <div class="element-left-bottom">
   <div class="ele-strip">
     <ul>
-      <li *ngFor="let item of types" [ngClass]="{'anc-bor': item === activeType}" (click)="setActiveType(item)">
-        <a href="#{{item}}">{{item}}</a>
+      <li *ngFor="let item of list | async | mapBy:'type' | uniq" [ngClass]="{'anc-bor': item === activeType}" (click)="setActiveType(item)">
+        <a href="#{{item}}">{{item | titlecase}}</a>
       </li>
     </ul>
   </div>
@@ -17,4 +17,3 @@
     </div>
   </div>
 </div>
-<pre>{{list}}</pre>
