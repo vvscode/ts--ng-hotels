@@ -24,7 +24,7 @@ export class ListComponent implements OnChanges {
   }
   public set activeItem(activeItem: IWeatherItem) {
     this._activeItem = activeItem;
-    this.activeType = activeItem.type;
+    this.activeType = activeItem ? activeItem.type : null;
   }
 
   @Input()

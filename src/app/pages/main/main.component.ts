@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
-
-import { data } from './data';
+import { ItemsService } from '../../services/items.service';
 import { IWeatherItem } from '../../../../@types/IWeatherItem';
 
 @Component({
@@ -10,10 +9,10 @@ import { IWeatherItem } from '../../../../@types/IWeatherItem';
   styleUrls: ['./main.component.less'],
 })
 export class MainComponent {
-  public listItems?: Observable<IWeatherItem[]> = of<IWeatherItem[]>(data);
+  public listItems?: Observable<IWeatherItem[]> = this._itemsService.getItems();
   public activeItem: IWeatherItem;
 
-  public constructor() {
+  public constructor(private _itemsService: ItemsService) {
     this.listItems.subscribe(
       (list: IWeatherItem[]) => (this.activeItem = list[0]),
     );
