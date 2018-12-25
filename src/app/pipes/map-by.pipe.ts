@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MapByPipe implements PipeTransform {
   // tslint:disable no-any
   public transform(value: any, fieldName: string): any {
-    if (Array.isArray(value) || typeof value.map === 'function') {
+    if (Array.isArray(value)) {
       return value.map((el: object) => el[fieldName]);
     }
     return value;

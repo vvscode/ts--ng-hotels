@@ -10,7 +10,7 @@ import { IWeatherItem } from '../../../../@types/IWeatherItem';
 })
 export class MainComponent {
   public listItems?: Observable<IWeatherItem[]> = this._itemsService.getItems();
-  public activeItem: IWeatherItem;
+  public activeItem?: IWeatherItem;
 
   public constructor(private _itemsService: ItemsService) {
     this.listItems.subscribe(

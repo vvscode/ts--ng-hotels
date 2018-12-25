@@ -3,7 +3,7 @@
   <div class="element-left">
     <ng-hotels-list [list]="listItems" [activeItem]="activeItem" (cardChoosen)="activeItem = $event"></ng-hotels-list>
   </div>
-  <div class="element-right">
+  <div class="element-right" *ngIf="activeItem">
     <ng-hotels-weather [weather]="activeItem.weather"></ng-hotels-weather>>
     <ng-hotels-selected-item [socialInfo]="activeItem.social_info"></ng-hotels-selected-item>
   </div>

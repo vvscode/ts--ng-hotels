@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
@@ -12,6 +12,9 @@ import { FormatPhonePipe } from './pipes/format-phone.pipe';
 import { FilterByPipe } from './pipes/filter-by.pipe';
 import { MapByPipe } from './pipes/map-by.pipe';
 import { UniqPipe } from './pipes/uniq.pipe';
+import { BASE_API_PATH } from './config';
+import { environment } from '../environments/environment';
+import { ApiInterceptor } from './common/api-interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,17 @@ import { UniqPipe } from './pipes/uniq.pipe';
     UniqPipe,
   ],
   imports: [BrowserModule, HttpClientModule],
-  providers: [],
+  providers: [
+    {
+      provide: BASE_API_PATH,
+      useValue: environment.baseApiPath,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

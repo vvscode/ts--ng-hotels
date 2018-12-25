@@ -11,6 +11,6 @@ export class ItemsService {
   public constructor(@Inject(HttpClient) private _http: HttpClient) {}
 
   public getItems(): Observable<IWeatherItem[]> {
-    return this._http.get<IWeatherItem[]>(`/assets/api/items/data.json`);
+    return this._http.get<IWeatherItem[]>(`/items/data.json`);
   }
 }
