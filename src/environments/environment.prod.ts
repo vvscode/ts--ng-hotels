@@ -2,5 +2,5 @@ import { IEnvironment } from '../../@types/IEnvironment';
 
 export const environment: IEnvironment = {
   production: true,
-  baseApiPath: '/assets/api',
+  baseApiPath: 'https://vvscode.github.io/ts--ng-hotels/assets/api',
 };
