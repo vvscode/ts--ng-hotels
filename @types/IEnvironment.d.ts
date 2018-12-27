@@ -1,4 +1,4 @@
-export interface IEnvironment {
+declare interface IEnvironment {
   production: boolean;
   baseApiPath: string;
 }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Inject } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { IWeatherItem } from '../../../@types/IWeatherItem';
 
 @Injectable({
   providedIn: 'root',
