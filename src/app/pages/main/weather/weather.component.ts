@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { IWeather, IWeatherItem } from '../../../../../@types/IWeatherItem';
 import { ItemsService } from '../../../services/items.service';
 
 @Component({

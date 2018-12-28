@@ -1,5 +1,4 @@
-import { Component, OnChanges } from '@angular/core';
-import { IWeatherItem } from '../../../../../@types/IWeatherItem';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ItemsService } from '../../../services/items.service';
 
