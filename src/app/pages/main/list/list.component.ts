@@ -28,6 +28,8 @@ export class ListComponent {
     _store.dispatch(new GetItemsPending());
     this.list = _store.pipe(select('items'));
     this.activeItem = _store.pipe(select('activeItem'));
+    // не нашел как объявить алиас в шаблоне
+    // чтобы разворачивать значение в строку
     _store
       .pipe(select('activeType'))
       .subscribe((type: string) => (this.activeType = type));
