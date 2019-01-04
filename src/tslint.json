@@ -52,7 +52,7 @@
       }
     ],
     "class-name": true,
-    "no-console": [true, "log", "debug", "info", "time", "timeEnd", "trace"],
+    "no-console": false, //[true, "log", "debug", "info", "time", "timeEnd", "trace"],
     "no-debugger": true,
     "no-arg": true,
     "no-invalid-this": true,
@@ -60,7 +60,7 @@
     "no-var-keyword": true,
     "use-isnan": true,
     "cyclomatic-complexity": [true, 20],
-    "max-classes-per-file": [true, 1],
+    "max-classes-per-file": [true, 10],
     "max-file-line-count": [true, 400],
     "max-line-length": [true, 120],
     "no-consecutive-blank-lines": [true, 2],
