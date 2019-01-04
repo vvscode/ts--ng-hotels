@@ -32,9 +32,10 @@ export class ListComponent {
     _store.dispatch(new GetItemsPending());
     this.list = _store.pipe(select('items'));
     this.activeItem = _store.pipe(select('activeItem'));
-    _store
-      .pipe(select('activeType'))
-      .subscribe((type: string) => (this.activeType = type));
+    _store.pipe(select('activeType')).subscribe((type: string) => {
+      console.log('ActiveType: ', type);
+      this.activeType = type;
+    });
   }
 
   public setActiveType(type: string): void {

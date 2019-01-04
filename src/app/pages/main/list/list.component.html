@@ -6,7 +6,7 @@
     <ul>
       <li
         *ngFor="let item of (list | async | mapBy: 'type' | uniq)"
-        [ngClass]="{ 'anc-bor': item === (activeType | async) }"
+        [ngClass]="{ 'anc-bor': item === activeType }"
         (click)="setActiveType(item)"
       >
         <a href="#{{ item }}">{{ item | titlecase }}</a>
@@ -14,7 +14,7 @@
     </ul>
   </div>
   <div class="village">
-    <h3>Righteous indignation & like about {{ activeType | async }}</h3>
+    <h3>Righteous indignation & like about {{ activeType }}</h3>
     <span class="line"> </span>
     <div class="activity_box">
       <div class="scrollbar" id="style-2">
