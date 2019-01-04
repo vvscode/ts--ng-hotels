@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ItemsService } from '../../../services/items.service';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { select, Store } from '@ngrx/store';
 
 @Component({
   selector: 'ng-hotels-selected-item',
@@ -7,11 +9,20 @@ import { ItemsService } from '../../../services/items.service';
   styleUrls: ['./selected-item.component.less'],
 })
 export class SelectedItemComponent {
-  public socialInfo?: ISocialInfo;
+  public socialInfo$?: Observable<ISocialInfo>;
 
-  public constructor(private _itemsService: ItemsService) {
-    this._itemsService.activeItem$.subscribe((item: IWeatherItem) => {
-      this.socialInfo = item.social_info;
-    });
+  public constructor(
+    private _store: Store<{
+      items: IWeatherItem[];
+      activeType: string;
+      activeItem: IWeatherItem;
+    }>,
+  ) {
+    this.socialInfo$ = _store.pipe(
+      select(
+        (state: IStore) =>
+          (state.activeItem || ({} as IWeatherItem)).social_info,
+      ),
+    );
   }
 }

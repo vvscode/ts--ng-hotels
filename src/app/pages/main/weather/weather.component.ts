@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ItemsService } from '../../../services/items.service';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ng-hotels-weather',
@@ -7,11 +8,19 @@ import { ItemsService } from '../../../services/items.service';
   styleUrls: ['./weather.component.less'],
 })
 export class WeatherComponent {
-  public weather?: IWeather;
+  public weather$?: Observable<IWeather>;
 
-  public constructor(private _itemsService: ItemsService) {
-    this._itemsService.activeItem$.subscribe((item: IWeatherItem) => {
-      this.weather = item.weather;
-    });
+  public constructor(
+    private _store: Store<{
+      items: IWeatherItem[];
+      activeType: string;
+      activeItem: IWeatherItem;
+    }>,
+  ) {
+    this.weather$ = _store.pipe(
+      select(
+        (state: IStore) => (state.activeItem || ({} as IWeatherItem)).weather,
+      ),
+    );
   }
 }

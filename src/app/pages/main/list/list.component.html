@@ -1,5 +1,5 @@
 <div *ngIf="activeItem" class="element-bg-img">
-  <img [src]="activeItem.img" alt="" class="img-responsive" />
+  <img [src]="(activeItem | async)?.img" alt="" class="img-responsive" />
 </div>
 <div class="element-left-bottom">
   <div class="ele-strip">
