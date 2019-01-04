@@ -39,7 +39,8 @@ import { GetItemsEffect, SetTypeEffect } from './store/effects/items.effect';
     HttpClientModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([GetItemsEffect, SetTypeEffect]),
-    environment.production ? [] : StoreDevtoolsModule.instrument(),
+    StoreDevtoolsModule.instrument(), // just for demo - normal flow is next line
+    // environment.production ? [] : StoreDevtoolsModule.instrument(),
   ],
   providers: [
     {

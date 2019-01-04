@@ -2,7 +2,7 @@
   "name": "ng-hotels",
   "version": "0.0.0",
   "scripts": {
-    "build:gh-page": "ng build --base-href \"https://vvscode.github.io/ts--ng-hotels/\"",
+    "build:gh-page": "ng build --prod --base-href \"https://vvscode.github.io/ts--ng-hotels/\"",
     "build": "ng build",
     "deploy": "yarn build:gh-page && ngh --dir=dist/ng-hotels",
     "e2e": "ng e2e",
