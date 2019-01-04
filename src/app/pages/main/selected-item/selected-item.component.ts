@@ -20,8 +20,10 @@ export class SelectedItemComponent {
   ) {
     this.socialInfo$ = _store.pipe(
       select(
-        (state: IStore) =>
-          (state.activeItem || ({} as IWeatherItem)).social_info,
+        'activeItem',
+        'social_info',
+        // (state: IStore) =>
+        //   (state.activeItem || ({} as IWeatherItem)).social_info,
       ),
     );
   }

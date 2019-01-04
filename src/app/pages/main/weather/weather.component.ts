@@ -18,9 +18,10 @@ export class WeatherComponent {
     }>,
   ) {
     this.weather$ = _store.pipe(
-      select(
-        (state: IStore) => (state.activeItem || ({} as IWeatherItem)).weather,
-      ),
+      select('activeItem', 'weather'),
+      // select(
+      //   (state: IStore) => (state.activeItem || ({} as IWeatherItem)).weather,
+      // ),
     );
   }
 }

@@ -27,7 +27,7 @@ export class GetItemsEffect {
         mergeMap((items: IWeatherItem[]) => [
           new GetItemsSuccess(items),
           new SetActiveType(items[0] ? items[0].type : ''),
-          new SetActiveItem(items[0] || null),
+          new SetActiveItem(items[0] || ({} as IWeatherItem)),
         ]),
         // If request fails, dispatch failed action
         catchError(() => of(new GetItemsError())),

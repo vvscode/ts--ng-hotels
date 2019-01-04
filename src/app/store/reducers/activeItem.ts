@@ -1,6 +1,6 @@
 import { SET_ACTIVE_ITEM } from '../actions/items.action';
 
-const defaultState: IWeatherItem = null;
+const defaultState: IWeatherItem = {} as IWeatherItem;
 
 export function activeItem(
   state: IWeatherItem = defaultState,
