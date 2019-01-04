@@ -19,7 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
-import { GetItemsEffect } from './store/effects/items.effect';
+import { GetItemsEffect, SetTypeEffect } from './store/effects/items.effect';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { GetItemsEffect } from './store/effects/items.effect';
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([GetItemsEffect]),
+    EffectsModule.forRoot([GetItemsEffect, SetTypeEffect]),
     environment.production ? [] : StoreDevtoolsModule.instrument(),
   ],
   providers: [
