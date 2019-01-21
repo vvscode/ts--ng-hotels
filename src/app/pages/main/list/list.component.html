@@ -1,18 +1,28 @@
-<div *ngIf="activeItem" class="element-bg-img"><img [src]="activeItem.img" alt="" class="img-responsive"> </div>
+<div *ngIf="activeItem" class="element-bg-img">
+  <img [src]="(activeItem | async)?.img" alt="" class="img-responsive" />
+</div>
 <div class="element-left-bottom">
   <div class="ele-strip">
     <ul>
-      <li *ngFor="let item of list | async | mapBy:'type' | uniq" [ngClass]="{'anc-bor': item === activeType}" (click)="setActiveType(item)">
-        <a href="#{{item}}">{{item | titlecase}}</a>
+      <li
+        *ngFor="let item of (list | async | mapBy: 'type' | uniq)"
+        [ngClass]="{ 'anc-bor': item === activeType }"
+        (click)="setActiveType(item)"
+      >
+        <a href="#{{ item }}">{{ item | titlecase }}</a>
       </li>
     </ul>
   </div>
   <div class="village">
-    <h3>Righteous indignation & like about {{activeType}}</h3>
+    <h3>Righteous indignation & like about {{ activeType }}</h3>
     <span class="line"> </span>
     <div class="activity_box">
       <div class="scrollbar" id="style-2">
-        <ng-hotels-item *ngFor="let item of list | async | filterBy:'type':activeType" [item]="item" (click)="onCardClick(item)"></ng-hotels-item>
+        <ng-hotels-item
+          *ngFor="let item of (list | async | filterBy: 'type':activeType)"
+          [item]="item"
+          (click)="onCardClick(item)"
+        ></ng-hotels-item>
       </div>
     </div>
   </div>

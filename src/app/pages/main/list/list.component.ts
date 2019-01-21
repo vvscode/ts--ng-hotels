@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ItemsService } from '../../../services/items.service';
+import { select, Store } from '@ngrx/store';
+import {
+  GetItemsPending,
+  SetActiveItem,
+  SetActiveType,
+} from 'src/app/store/actions/items.action';
 
 @Component({
   selector: 'ng-hotels-list',
@@ -8,24 +13,33 @@ import { ItemsService } from '../../../services/items.service';
   styleUrls: ['./list.component.less'],
 })
 export class ListComponent {
-  public types: string[];
   public activeType: string;
-  public activeItem?: IWeatherItem;
+  public activeItem?: Observable<IWeatherItem>;
 
-  public list?: Observable<IWeatherItem[]> = this._itemsService.getItems();
+  public list?: Observable<IWeatherItem[]>;
 
-  public constructor(private _itemsService: ItemsService) {
-    this._itemsService.activeItem$.subscribe((item: IWeatherItem) => {
-      this.activeItem = item;
-      this.activeType = item.type;
-    });
+  public constructor(
+    private _store: Store<{
+      items: IWeatherItem[];
+      activeType: string;
+      activeItem: IWeatherItem;
+    }>,
+  ) {
+    _store.dispatch(new GetItemsPending());
+    this.list = _store.pipe(select('items'));
+    this.activeItem = _store.pipe(select('activeItem'));
+    // не нашел как объявить алиас в шаблоне
+    // чтобы разворачивать значение в строку
+    _store
+      .pipe(select('activeType'))
+      .subscribe((type: string) => (this.activeType = type));
   }
 
   public setActiveType(type: string): void {
-    this.activeType = type;
+    this._store.dispatch(new SetActiveType(type));
   }
 
   public onCardClick(item: IWeatherItem): void {
-    this._itemsService.setActiveItem(item);
+    this._store.dispatch(new SetActiveItem(item));
   }
 }

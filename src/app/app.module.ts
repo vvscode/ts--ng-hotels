@@ -15,6 +15,11 @@ import { UniqPipe } from './pipes/uniq.pipe';
 import { BASE_API_PATH } from './config';
 import { environment } from '../environments/environment';
 import { ApiInterceptor } from './common/api-interceptor';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { GetItemsEffect, SetTypeEffect } from './store/effects/items.effect';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,14 @@ import { ApiInterceptor } from './common/api-interceptor';
     MapByPipe,
     UniqPipe,
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([GetItemsEffect, SetTypeEffect]),
+    StoreDevtoolsModule.instrument(), // just for demo - normal flow is next line
+    // environment.production ? [] : StoreDevtoolsModule.instrument(),
+  ],
   providers: [
     {
       provide: BASE_API_PATH,
